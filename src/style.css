@@ -1,0 +1,251 @@
+:root {
+  --orange: #E64E2E;
+  --link-color: #AD3B23;
+  --background: #E6E6E6;
+}
+
+html {
+  margin: 0;
+  border: 0;
+  background: #E6E6E6;
+}
+
+#login-succeed {
+  margin: 0 auto;
+  position: relative;
+  /* background-color: rgb(104, 104, 104); */
+  width: 600px;
+  height: 400px;
+  font-family: Verdana, Geneva, sans-serif;
+}
+
+#gradient {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 640px;
+  height: 128px;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#e6e6e6+0,e6e6e6+100;48 */
+  background: #e6e6e6; /* Old browsers */
+  background: linear-gradient(to bottom,  #e6e6e6 0%,#e6e6e6 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+}
+
+#bubble {
+  background-color: var(--orange);
+  position: absolute;
+  top: 64px;
+  left: 48px;
+  width: 512px;
+  height: 224px;
+}
+
+#bubble-triangle {
+  position: absolute;
+  top: 288px;
+  left: 80px;
+  width: 0;
+  height: 0;
+  border-top: 48px solid black;
+  border-right: 48px solid transparent;
+}
+
+#welcome {
+  padding: 24px;
+  color: #FFFFFF;
+}
+#welcome-en {
+  font-weight: lighter;
+}
+
+
+
+
+#colon, #p {
+  font-size: 64px;
+}
+#p {
+  vertical-align: -0.1em;
+}
+
+#welcome-zh {
+  font-family: Microsoft YaHei UI;
+  font-size: 36px;
+}
+#welcome-en {
+  font-family: Microsoft YaHei UI;
+  font-weight: lighter;
+  font-size: 20px;
+}
+
+#info {
+  padding: 2em;
+  background-color: #F2F2F2;
+  position: absolute;
+  top: 32px;
+  left: 176px;
+  width: 352px;
+  height: 200px;
+  --gray50: #D8D8D8;
+  --gray75: #E7E3E4;
+  --gray100: #DBD5D7;
+  --gray125: #CFC8CB;
+  --grayover: #A29B9E;
+}
+
+#stats td {
+  margin: 20px;
+  padding: 10px;
+}
+
+#duration-label, #usage-label {
+  text-align: right;
+  font-size: 13px;
+  color: #303030;
+}
+
+#duration-label > .en {
+  font-weight: lighter;
+}
+
+#duration-value {
+  color: #EC6677;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 28px;
+  font-weight: lighter;
+}
+
+#username {
+  color: var(--orange);
+  font-size: 34px;
+}
+
+#usage-ticks {
+  color: #969696;
+  font-size: 13px;
+  font-family: Verdana, Geneva, sans-serif;
+  text-align: right;
+}
+
+#bar {
+  border-collapse: collapse;
+}
+
+#bar td {
+  padding: 0;
+}
+
+#bar-sections {
+  height: 32px;
+}
+
+#td75, #td100, #td125 {
+  width: 53px;
+}
+
+#td50 {
+  width: 106px;
+  background-color: var(--gray50);
+  text-align: center;
+  font-size: 24px;
+  color: #5C5C5C;
+}
+
+#td75 {
+  background-color: var(--gray75);
+}
+
+#td100 {
+  background-color: var(--gray100);
+}
+
+#td125 {
+  background-color: var(--gray125);
+}
+
+.tdwhite, .tdblack {
+  width: 4px;
+}
+
+.tdblack {
+  background-color: var(--grayover);
+}
+
+#bar-wrapper {
+  position: relative;
+}
+
+#bar-progress {
+  z-index: 10;
+  display: inline;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 32px;
+  background-color: #FBB03B;
+}
+
+#disconnect {
+  background-color: white;
+  text-align: center;
+  position: absolute;
+  top: 240px;
+  left: 340px;
+}
+
+#disconnect-triangle {
+  width: 0;
+  height: 0;
+  border-bottom: 16px solid #CCCCCC;
+  border-right: 16px solid transparent;
+}
+
+
+#disconnect-btn {
+  cursor: pointer;
+  background-color: #C0BDCC;
+  border: #B2AABE solid 1px;
+  font-size: 18px;
+  width: 174px;
+  height: 46px;
+  margin: 16px;
+
+}
+
+#dfisconnect-en {
+  font-weight: lighter;
+}
+
+
+nav {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+#links {
+  display: inline-block;
+  font-size: 11px;
+  text-decoration: none;
+}
+
+.link-item {
+  margin-left: 10px;
+  text-decoration: none;
+  list-style-type: none;
+  vertical-align: middle;
+}
+
+.link-img {
+  vertical-align: bottom;
+}
+
+.link-a {
+  text-decoration: none;
+  color: #AD3B23
+}
+
+.link-a:hover {
+  text-decoration: underline;
+}
