@@ -1,0 +1,92 @@
+\section{使用说明}
+
+使用浏览器打开 \code{ext/index.html}。加载其中的 Vue.js 脚本需要链接互联网。
+
+\section{代码结构}
+
+本实验的代码存放在 \code{ext/index.html}、\code{ext/style.css}、\code{ext/index.js} 中，实现了内容、样式、和行的分离。所有被使用的图片存放在 \code{/ext/imgs} 中。
+
+\section{实现}
+
+\subsection{内容}
+
+以下介绍已实现的内容以及实现方法：
+
+\begin{itemize}
+  \item 整个 Vue.js 应用在 \code{id="login-success} 的 \code{div} 中存放
+  \item 对话框：由一个正方形的 \code{div}、一个三角形的 \code{div}、以及文字组成
+  \item 信息框：
+  \begin{itemize}
+    \item 用户名
+    \item 已链接：表示用户链接的时常，由时：分：秒的格式显示
+    \item 已用流量：通过文字以及进度条显示
+  \end{itemize}
+  \item “断开链接”按钮：白色的 \code{div} 中放置灰色的按钮，使用 \code{div} 显示灰色三角形
+  \item 导航：四个链接由文字以及图标组成的链接
+\end{itemize}
+
+\subsection{样式}
+
+为了与原网页更加类似，许多属性，包括各个元素的大小以及字体，是通过浏览源代码而发现并使用的。
+
+\newpage
+
+\subsubsection{颜色}
+
+此项目通过浏览原网页的源代码，或者截图使用图像编辑器寻找每个元素的颜色。考虑到了以下元素的颜色：
+
+\begin{itemize}
+  \item 页面背景
+  \item 橘色对话框以及其中的“欢迎”文字
+  \item 用户名
+  \item 已间接时间
+  \item 灰色的已用流量刻度文字以及片段
+  \item 橘色的已用流量进度条
+  \item “断开连接”在非悬停、悬停、点击三个状态
+  \item 链接在非悬停、悬停、点击三个状态
+\end{itemize}
+
+\subsubsection{图片}
+
+原网页中使用了多张图片包括：
+
+\begin{itemize}
+  \item “欢迎” 文字
+  \item “断开连接” 按钮
+  \item 导航链接图标
+  \item 网页图标
+\end{itemize}
+
+都是使用图片而显示的。前面两个图像很容易使用纯 HTML + CSS 实现，并且显示效果更好，因此此项目只使用了导航链接和网页图标这两种图片。
+
+\newpage
+
+\subsection{行为}
+
+\begin{itemize}
+  \item “断开链接”按钮
+  \begin{itemize}
+    \item 当光标悬停在按钮上，按钮的背景颜色会变化，光标从箭头变成手
+    \item 当光标离开按钮时，按钮的背景颜色以及光标的形状将会复原
+  \end{itemize}
+  \item 导航
+  \begin{itemize}
+    \item 可以通过点击文字，也可以通过点击图标访问对应的网站
+    \item 当光标悬停在链接上，文字的颜色不变，下划线以及链接指向的网站的中文名和其 URL 将出现
+    \item 点击链接后，它指向网页将在新的分页中加载，原始网页不被改变
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Vue.js}
+
+此网页包括若干个将会动态变化的元素，包括：
+
+\begin{itemize}
+  \item 用户名
+  \item 以链接时间
+  \item 已用流量的数值以及进度条的长度
+\end{itemize}
+
+以上的值没有写死在 HTML 代码中，而是使用 Vue.js 的 \code{data} 函数传递给 HTML。由于实验一只要求静态的网页，这些值在 \code{index.js} 中的代码写死了，但是以后可以容易地实现它们的动态变化。
+
+此外，存在多个导航链接，它们的 HTML 代码的重复性较高，而且以后有可能增加更多链接，则链接是使用 \code{Vue.js} 动态创建的。

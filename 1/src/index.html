@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>清华大学校园网 Tsinghua University Network</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="imgs/favicon.png">
+  </head>
+
+  <body>
+    <!-- beginning of app -->
+    <div id="login-success">
+      <!-- top-right corner gradient not yet implemented -->
+      <div id="gradient"></div>
+      <!-- orange speech bubble -->
+      <div id="bubble">
+        <div id="welcome">
+          <span id="colon">:</span><span id="p">P</span><br>
+          <span id="welcome-zh">欢迎，</span><br>
+          <span id="welcome-en">Welcome,</span>
+        </div>
+        <div id="bubble-triangle"></div>
+      </div>
+
+      <!-- central info panel -->
+      <div id="info">
+
+        <div id="username">{{ username }}</div>
+
+        <table id="stats">
+          <tr>
+            <td id="duration-label">
+              <span>已链接</span><br>
+              <span class="en">Duration</span>
+            </td>
+            <td id="duration-value">{{ duration }}</td>
+          </tr>
+          <tr>
+            <td id="usage-label">
+              <span>已用流量</span><br>
+              <span class="en">Usage</span>
+            </td>
+            <td id="usage-value">
+
+              <!-- used table to render the progress bar -->
+              <table id="bar">
+                <tr id="usage-ticks">
+                  <td>50</td>
+                  <td>75</td>
+                  <td>100</td>
+                  <td>125</td>
+                </tr>
+                <tr id="bar-sections">
+                  <td id="bar50">
+                    <!-- first td contains a floating div to show the progress -->
+                    <div id="bar-progress">
+                      {{ usage }}G
+                    </div>
+                  </td>
+                  <td id="bar75"></td>
+                  <td id="bar100"></td>
+                  <td id="bar125"></td>
+                  <td class="barwhite"></td>
+                  <td class="barblack"></td>
+                  <td class="barwhite"></td>
+                  <td class="barblack"></td>
+                </tr>
+              </table>
+            </td>
+            
+          </tr>
+        </table>
+      </div>
+
+      <!-- disconnect button -->
+      <div id="disconnect">
+        <div id="disconnect-triangle"></div>
+        <button id="disconnect-btn">
+          <span>断开连接</span><br>
+          <span class="en">Disconnect</span>
+        </button>
+      </div>
+
+      <!-- navigation links -->
+      <nav>
+        <ul id="links" v-for="link in links">
+          <li class="link-item">
+            <a class="link-a" :href="link.url" :title="link.title" target="_blank">
+              <img class="link-img" :src="link.img">
+              {{ link.name }}
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+  </body>
+
+  <script src="index.js"></script>
+</html>

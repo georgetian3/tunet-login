@@ -1,0 +1,136 @@
+body {
+  background-color: #E6E6E6;
+}
+div {
+  border: 1px solid;
+}
+#login {
+  position: relative;
+  margin: 0 auto;
+  width: 768px;
+}
+#header {
+  display: flex;
+  align-items: center;
+}
+
+#title {
+  position: relative;
+}
+
+#logo {
+  left: -10px;
+}
+
+#tunet {
+  left: 0px;
+}
+
+#follow {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 300px;
+}
+
+#qr {
+  width: 129px;
+  height: auto;
+
+}
+
+#thu {
+  width: 215px;
+  height: 105px;
+}
+
+#main {
+  width: 100%;
+  height: 400px;
+  position: relative;
+}
+
+#greeting {
+  background-color: #E64E2E;
+  width: 600px;
+  height: 200px;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+}
+
+#notification {
+  background-color: #E6562E;
+  position: absolute;
+  top: 70px;
+  left: -16px;
+  width: 600px;
+  height: 200px;
+}
+
+#shadow-triangle {
+  width: 0;
+  height: 0;
+  border-bottom: 16px solid #AD3B23;
+  border-left: 16px solid transparent;
+  position: absolute;
+  top: -16px;
+  left: 0;
+  z-index: 10;
+}
+
+#speech-triangle {
+  width: 0;
+  height: 0;
+  border-top: 48px solid #E64E2E;
+  border-right: 48px solid transparent;
+  position: absolute;
+  left: 48px;
+  bottom: -48px;
+  z-index: 10;
+}
+
+#form {
+  background-color: #F2F2F2;
+  position: absolute;
+  top: 20px;
+  right: 0;
+  padding: 1em;
+}
+
+.label {
+  text-align: left;
+}
+
+#form-triangle {
+  width: 0;
+  height: 0;
+  border-top: 48px solid #F2F2F2;
+  border-right: 48px solid transparent;
+  position: absolute;
+  bottom: -48px;
+  right: 36px;
+}
+
+#submit {
+  width: 100%;
+  background-color: #c0ce55;
+}
+
+#submit:hover {
+  background-color: #d2e042;
+}
+
+#links {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+}
+
+#footer {
+  color: #6E6F6F;
+  text-align: right;
+}
+

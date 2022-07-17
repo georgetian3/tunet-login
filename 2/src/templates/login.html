@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>清华大学无线校园网 Tsinghua University Wireless Network</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="static/css/login.css">
+    <link rel="icon" href="static/img/favicon.png">
+  </head>
+
+  <body>
+    
+    <div id="login">
+      <div id="header">
+        <div id="title">
+          <img id="logo" src="static/img/login/logo.gif">
+          <img id="tunet" src="static/img/login/title.png">
+        </div>
+        <div id="follow">
+          <img id="qr" src="static/img/login/qr.jpg"><br>
+          欢迎关注“清华大学信息服务”
+        </div>
+        <a href="http://mobileapp.tsinghua.edu.cn/">
+          <img id="thu" src="static/img/login/attsinghua.png">
+        </a>
+      </div>
+      <div id="main">
+        <div id="greeting">
+          <span>;)</span><span>你好，</span><span>Hi,</span>
+          <div id="notification">
+            <span>通知</span><span>Notification</span>
+            <div id="shadow-triangle"></div>
+            <div id="speech-triangle"></div>
+          </div>
+        </div>
+        
+        <div id="form">
+          <table>
+            <tr>
+              <td class="label">
+                <span>用户名</span><br>
+                <span>User ID</span>
+              </td>
+              <td>
+                <input id="username" class="textbox" type="text">
+              </td>
+            </tr>
+            <tr>
+              <td class="label">
+                <span>密码</span><br>
+                <span>Password</span>
+              </td>
+              <td>
+                <input id="password" class="textbox" type="password">
+              </td>
+            </tr>
+          </table>
+
+          <button id="submit" onclick="connect()">
+            <span>链接</span><br>
+            <span>Connect</span>
+          </button>
+
+          <div id="form-triangle"></div>
+
+        </div>
+      </div>
+      <div id="links">
+        <div id="downloads">
+          downloads
+        </div>
+        <div id="actions">
+          actions
+        </div>
+      </div>
+      <div id="footer">
+        <span>清华大学信息化技术中心</span><br>
+        <span>Information Technology Center of Tsinghua University</span>
+      </div>
+    </div>
+
+  </body>
+
+  <script src="static/js/login.js"></script>
+</html>

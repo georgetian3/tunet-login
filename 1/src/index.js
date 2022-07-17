@@ -2,14 +2,16 @@ function capitalizeFirstLetter (str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+// dynamically generating the navigation links
+
 const keys = ['info', 'lib', 'learn', 'mail'];
 const titles = [
   '清华信息门户\ninfo.tsinghua',
   '清华图书馆\nlib.tsinghua',
   '清华网络学堂\nlearn.tsinghua',
   '清华邮箱\nmail.tsinghua',
-]
-let links = []
+];
+let links = [];
 
 for (let i in keys) {
   let link = {};
@@ -20,8 +22,10 @@ for (let i in keys) {
   links.push(link);
 }
 
-let usage = 5.08
+// currently non-dynamic variables
 
+let usage = 5.08;
+let username = 'tianzq20';
 
 Vue.createApp({
   data() {
@@ -30,14 +34,17 @@ Vue.createApp({
       links: links,
       hover: false,
       usage: usage,
-      barLength: Math.min(125, 53 * 5 * usage / 125),
+      username: username,
+      duration: '23:00:00',
     }
   },
-  watch: {
-    hover(newHover) {
-      if (newHover) {
-        
-      }
-    }
-  }
-}).mount('#login-succeed')
+
+
+}).mount('#login-success')
+
+
+// dynamically setting the length of the progress bar based on `usage`
+
+let pbar = document.getElementById('bar-progress');
+let new_width = Math.min(125, 53 * 5 * usage / 125) + 'px';
+pbar.style.width = new_width;
