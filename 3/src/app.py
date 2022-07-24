@@ -3,11 +3,15 @@ from flask import Flask, request, render_template, redirect
 app = Flask(__name__)
 
 connected = False
-credentials = {}
+credentials = {
+    'username': None,
+    'password': None,
+}
 
 @app.route('/login')
 @app.route('/', methods=['GET', 'POST'])
 def login():
+    #return redirect('/success')
     global connected
     if connected:
         return redirect('/success')
@@ -44,4 +48,4 @@ def success():
 
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    app.run(debug=False, host='0.0.0.0')

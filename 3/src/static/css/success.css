@@ -3,7 +3,7 @@ html {
   border: 0;
   background: #E6E6E6;
 }
-#login-success {
+#success {
   margin: 0 auto;
   position: relative;
   width: 640px;
@@ -233,4 +233,10 @@ nav {
 
 .link-a:hover {
   text-decoration: underline;
+}
+
+#chart {
+  position: relative;
+  top: 30em;
+  height: 30em;
 }

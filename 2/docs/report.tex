@@ -1,92 +1,34 @@
 \section{使用说明}
 
-使用浏览器打开 \code{ext/index.html}。加载其中的 Vue.js 脚本需要链接互联网。
+在 \code{src/} 目录下运行：
+\begin{lstlisting}
+pip install -r requirements.txt
+py app.py
+\end{lstlisting}
+并在浏览器中访问 Flask 所显示的 URL（默认 \url{http://127.0.0.1:5000/}）。唯一的用户名为 \code{tianzq20}，密码为 \code{password}。
 
 \section{代码结构}
 
-本实验的代码存放在 \code{ext/index.html}、\code{ext/style.css}、\code{ext/index.js} 中，实现了内容、样式、和行的分离。所有被使用的图片存放在 \code{/ext/imgs} 中。
+此文档中以下的路径都默认添加 \code{src/} 前缀。
+
+本项目的 HTML、CSS、Javascript、以及图片文件分别存放在 \code{templates}、\code{static/css}、\code{static/js}、以及 \code{static/img}。实现后端的 Flask 程序存放在 \code{app.py} 中。
 
 \section{实现}
 
 \subsection{内容}
 
-以下介绍已实现的内容以及实现方法：
-
-\begin{itemize}
-  \item 整个 Vue.js 应用在 \code{id="login-success} 的 \code{div} 中存放
-  \item 对话框：由一个正方形的 \code{div}、一个三角形的 \code{div}、以及文字组成
-  \item 信息框：
-  \begin{itemize}
-    \item 用户名
-    \item 已链接：表示用户链接的时常，由时：分：秒的格式显示
-    \item 已用流量：通过文字以及进度条显示
-  \end{itemize}
-  \item “断开链接”按钮：白色的 \code{div} 中放置灰色的按钮，使用 \code{div} 显示灰色三角形
-  \item 导航：四个链接由文字以及图标组成的链接
-\end{itemize}
+此项目中有两个网页：“登录”页面，即让用户输入用户名以及密码，以及“成功”页面，即用户成功地登录后可以看到自己的连接时常以及已用流量。它们分别存放在 \code{templates/login.html} 和 \code{templates/success.html} 中。后者与实验一相比几乎相同。
 
 \subsection{样式}
 
-为了与原网页更加类似，许多属性，包括各个元素的大小以及字体，是通过浏览源代码而发现并使用的。
-
-\newpage
-
-\subsubsection{颜色}
-
-此项目通过浏览原网页的源代码，或者截图使用图像编辑器寻找每个元素的颜色。考虑到了以下元素的颜色：
-
-\begin{itemize}
-  \item 页面背景
-  \item 橘色对话框以及其中的“欢迎”文字
-  \item 用户名
-  \item 已间接时间
-  \item 灰色的已用流量刻度文字以及片段
-  \item 橘色的已用流量进度条
-  \item “断开连接”在非悬停、悬停、点击三个状态
-  \item 链接在非悬停、悬停、点击三个状态
-\end{itemize}
-
-\subsubsection{图片}
-
-原网页中使用了多张图片包括：
-
-\begin{itemize}
-  \item “欢迎” 文字
-  \item “断开连接” 按钮
-  \item 导航链接图标
-  \item 网页图标
-\end{itemize}
-
-都是使用图片而显示的。前面两个图像很容易使用纯 HTML + CSS 实现，并且显示效果更好，因此此项目只使用了导航链接和网页图标这两种图片。
-
-\newpage
+用于为 \code{login.html} 以及 \code{success.html} 添加样式的 CSS 文件分别存放在 \code{static/css/login.css} 以及 \code{static/css/succeess.css} 中。
 
 \subsection{行为}
 
-\begin{itemize}
-  \item “断开链接”按钮
-  \begin{itemize}
-    \item 当光标悬停在按钮上，按钮的背景颜色会变化，光标从箭头变成手
-    \item 当光标离开按钮时，按钮的背景颜色以及光标的形状将会复原
-  \end{itemize}
-  \item 导航
-  \begin{itemize}
-    \item 可以通过点击文字，也可以通过点击图标访问对应的网站
-    \item 当光标悬停在链接上，文字的颜色不变，下划线以及链接指向的网站的中文名和其 URL 将出现
-    \item 点击链接后，它指向网页将在新的分页中加载，原始网页不被改变
-  \end{itemize}
-\end{itemize}
+后端是此项目的重点之一，而它的实现在 \code{app.py} 中使用了 Flask 框架。本项目有两个接口，其 URL 路径分别在 \code{/login}（或 \code{/}）以及 \code{/success}，也有两个状态：连接状态 \code{connected} 以及已用流量 \code{usage}。在未连接状态下，用户访问 \code{/success} 后将会被重定向到 \code{/login}。\code{/login} 在接收 \code{GET} 请求后就会反应登录页面的 HTML 代码。在接收 \code{POST} 请求，即用户名以及密码，就会根据正确性而返回对应的响应。\code{POST} 请求的发送是由 \code{/static/js/login.js} 中的 \code{connect()} 函数实现的。此函数也负责实现空用户名或空密码的异常处理，以及将用户名和密码以 JSON 格式发送给后端。登录成功后重定向到 \code{/success} 也是 \code{login.js} 中的 \code{connect()} 函数实现的。
 
-\subsubsection{Vue.js}
+类似的，在已连接状态下，用户访问 \code{/login} 后将会被重定向到 \code{/success}。\code{/success} 在接收 \code{GET} 请求后就会反应成功页面的 HTML 代码。在接收 \code{POST} 请求，即用户点击“断开链接”，就会重定向到 \code{/login}，并将已用流量增加。
 
-此网页包括若干个将会动态变化的元素，包括：
+\section{问题与解决方法}
 
-\begin{itemize}
-  \item 用户名
-  \item 以链接时间
-  \item 已用流量的数值以及进度条的长度
-\end{itemize}
-
-以上的值没有写死在 HTML 代码中，而是使用 Vue.js 的 \code{data} 函数传递给 HTML。由于实验一只要求静态的网页，这些值在 \code{index.js} 中的代码写死了，但是以后可以容易地实现它们的动态变化。
-
-此外，存在多个导航链接，它们的 HTML 代码的重复性较高，而且以后有可能增加更多链接，则链接是使用 \code{Vue.js} 动态创建的。
+一个我遇到的问题是：已用流量不仅需要通过文字在成功页面上显示，而且也需要改变此页面上的橘色进度条的长度。Flask 所使用的模板可以让后端动态地改变 HTML 中的内容，但较难改变样式，因此无法改变进度条的长度。一个方式是让后端将已用流量传输给 Javascript，并让 Javascript 改变文字以及进度条。比如：后端实现另外一个接口，只返回已用流量。Javascript 就可以发出请求，并从回应中得到已用流量。但是会到一定的程度增加代码量。此项目的解决方法是将已用流量的文字通过模板放在 HTML 中（使用 \code{usage} 变量），并将 Javascript 读取 HTML 文件中的元素，从而的去已用流量的数值，最后可以改变进度条的长度。

@@ -1,0 +1,25 @@
+\section{使用说明}
+
+在 \code{src/} 目录下运行：
+\begin{lstlisting}
+pip install -r requirements.txt
+py app.py
+\end{lstlisting}
+
+并在浏览器中访问 Flask 所显示的 URL（默认 \url{http://127.0.0.1:5000/}）。唯一的用户名为 \code{tianzq20}，密码为 \code{password}。
+
+\section{代码结构}
+
+此文档中以下的路径都默认添加 \code{ext/} 前缀。
+
+此实验的代码结构与实验二完全一样，即 HTML、CSS、Javascript、以及图片文件分别存放在 \code{templates}、\code{static/css}、\code{static/js}、以及 \code{static/img}。实现后端的 Flask 程序存放在 \code{app.py} 中。与实验二不同之处是所有使用的 Javascript 库文件都存放在 \code{static/js} 下，包括 \code{vue.js} 以及 \code{echarts.js}，则不联网也可以运行此实验。
+
+\section{实现}
+
+此实验在实验二的基础上添加了显示流量使用情况的动态折线图。使用的是 Apache ECharts 库，并且参考了以下来自官网的例子：\url{https://echarts.apache.org/examples/en/editor.html?c=dynamic-data2}。在 \code{templates/success.html} 中的底部添加了 \code{id="chart"} 的 \code{div}，用于包含图表，并在 \code{static/css/success.css} 中设置了它的大小以及位置。
+
+主要的代码添加到了 \code{static/js/static.js} 的尾端。其中定义了两个全局变量： \code{data} 用于存放图表中显示的十个数据点，而 \code{usage} 记录总共流量使用。调用的 \code{setInterval} 函数将每两秒往 \code{data} 中存数据，并只保留数组中的后十个元素。每个数据点是由当前的时间以及当前总共使用的流量组成。为了让图表中的圆圈与横轴对齐，目前的时间的毫秒部分被设为零。每次产生一个数据点也会将 \code{usage} 增加零至一之间的随机的浮点数。当鼠标悬停在图表上，提示将会出现，其格式为 “\code{HH}:\code{mm}:\code{ss} \code{x}.\code{yz}GB”。
+
+\section{问题}
+
+当网页长期在后台运行，折线图上的圆圈可能会集中在图的右端。此问题较难复制，目前没有找到解决方法。

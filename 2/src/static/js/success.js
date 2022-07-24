@@ -20,6 +20,7 @@ function makeLinks() {
     link.title = '清华' + titles[i] + '.tsinghua';
     links.push(link);
   }
+  return links;
 }
 
 // dynamically setting the length of the progress bar based on `usage`
@@ -31,18 +32,16 @@ function setProgressBar() {
 }
 
 async function main() {
-  const links = makeLinks();
   Vue.createApp({
     delimiters: ['${', '}'],
     data() {
       return {
-        links: links,
+        links: makeLinks(),
         duration: '23:00:00',
       }
     }
 
-  }).mount('#login-success');
-
+  }).mount('#success');
   setProgressBar();
 }
 

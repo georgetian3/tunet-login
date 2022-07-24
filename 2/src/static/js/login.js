@@ -1,5 +1,22 @@
-let no_username = '用户不存在'
-let wrong_password = '密码错误'
+function getOss() {
+  const names = [
+    'Windows',
+    'MacOS',
+    'Linux',
+    'Android',
+    'iOS',
+  ]
+  oss = []
+  for (let i in names) {
+    let os = {};
+    os.name = names[i];
+    os.lower = names[i].toLowerCase();
+    os.img = 'static/img/login/' + os.lower + '.gif';
+    oss.push(os);
+  }
+  console.log(oss);
+  return oss;
+}
 
 async function connect() {
 
@@ -36,3 +53,18 @@ async function connect() {
   }
   
 };
+
+function main() {
+  let oss = getOss();
+  Vue.createApp({
+    delimiters: ['${', '}'],
+    data() {
+      return {
+        oss: oss,
+      }
+    }
+
+  }).mount('#login');
+}
+
+main();
